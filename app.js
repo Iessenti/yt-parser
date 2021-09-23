@@ -2,12 +2,21 @@ const fs = require('fs')
 const youtube = require('scrape-youtube').default;
 const express = require('express')
 const app = express()
+const path = require('path')
 
 app.use('/api', require('./routes/getdatabyclient'))
+
+ app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+
+ app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
 
 const config = require('config')
 const MongoClient = require("mongodb").MongoClient
 const dbClient = new MongoClient(config.get("mongoUri"), {useNewUrlParser:true, useUnifiedTopology: true})
+
+
 
 const checkStartedStreams = async () => {
 
