@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <input type='text' placeholder='введите url стрима' value={currentValue.url} onChange={ (e) => setCurrentValue({...currentValue, url: e.target.value}) />
+        <input type='text' placeholder='введите url стрима' value={currentValue.url} onChange={ (e) => setCurrentValue({...currentValue, url: e.target.value}) } />
         <input id="datetime" type="datetime-local" value={currentValue.fulldate} onChange={ (e) => setCurrentValue({...currentValue, fulldate: e.target.value}) }/>
         <button onClick={ () => sendData()}>Отправить</button>
       </div>
