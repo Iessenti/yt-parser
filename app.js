@@ -3,6 +3,7 @@ const youtube = require('scrape-youtube').default;
 const express = require('express')
 const app = express()
 const path = require('path')
+var cors = require('cors'); 
 
 app.use('/api', require('./routes/getdatabyclient'))
 
@@ -11,6 +12,8 @@ app.use('/api', require('./routes/getdatabyclient'))
  app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
+
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 const config = require('config')
 const MongoClient = require("mongodb").MongoClient
