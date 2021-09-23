@@ -14,12 +14,12 @@ function App() {
   const [getFileUrl, setGetFileUrl] = useState('')
 
   const sendData = async () => {
-    const d = request('/api/create-new-stream', 'POST', currentValue)
+    const d = request('api/create-new-stream', 'POST', currentValue)
   }
 
   const getFile = async () => {
 
-    await fetch('/api/getFile', {
+    await fetch('api/getFile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
